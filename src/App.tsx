@@ -1,24 +1,35 @@
+import { ThemeProvider } from '@emotion/react';
+import { createTheme, Box, AppBar, Toolbar, IconButton, Typography, Container, Grid, Paper } from '@mui/material';
+import { cyan } from '@mui/material/colors';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
+import Sidebar from './components/Sidebar/Sidebar';
+import './scss/app.scss'
+
+const theme = createTheme({
+  palette: {
+    primary: cyan,
+    secondary: {
+      main: '#27272a',
+    },
+  },
+})
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='wrapper'>
+      <ThemeProvider theme={theme}>
+        <Header />
+        <Container fixed>
+          <Grid container xs={8} margin={'20px 0'}>
+
+          </Grid>
+          <Grid container spacing={4}>
+
+          </Grid>
+        </Container>
+      </ThemeProvider>
     </div>
   );
 }

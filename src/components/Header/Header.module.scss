@@ -1,0 +1,37 @@
+.header {
+   .header__container {
+      .header__up {
+         display: flex;
+         height: 44px;
+         .up__menu {
+            padding: 14px 27px 14px 24px;
+         }
+         .up__button {
+            padding: 15px 34px 14px 0;
+         }
+         .up__selectors {
+            display: flex;
+            .selectors__title {
+               font-size: 14px;
+               line-height: 16px;
+               align-self: center;
+               padding: 13px 0px 13px 0px;
+               margin-right: 20px;
+            }
+         }
+      }
+      .header__down {
+         display: flex;
+         .down__title-project {
+            .title-project__title {
+            }
+            .title-project__abbreviation {
+            }
+            .title-project__checkmark {
+            }
+         }
+         .down__main-title {
+         }
+      }
+   }
+}
