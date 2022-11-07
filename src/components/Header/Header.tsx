@@ -27,18 +27,23 @@ const Header = () => {
                      </div>
                      <div className="up__selectors">
                         {SelectorsFromHeader.map(s =>
-                           <Box
-                              style={selected === s.id ? { borderBottom: '2px solid white' } : { borderBottom: 'none' }} className="selectors__title"
-                              onClick={() => { onClickSwitchSelected(s.id) }}>
-                              {s.title}
-                           </Box>)
+                           <div>
+                              <div
+                                 style={selected === s.id ? { borderBottom: '2px solid white', boxSizing: 'border-box' } : { borderBottom: 'none', boxSizing: 'border-box' }} className="selectors__title"
+                                 onClick={() => { onClickSwitchSelected(s.id) }}>
+                                 {s.title}
+                              </div>
+                           </div>
+                        )
                         }
                      </div>
                   </Box>
                   <Box className="header__down">
                      <Box sx={{ borderRight: 1, borderColor: '#414144' }} className="down__title-project">
-                        <div className="title-project__title">Название проекта</div>
-                        <div className="title-project__abbreviation">Аббревиатура</div>
+                        <div className='title-project__info'>
+                           <div className="title-project__title">Название проекта</div>
+                           <div className="title-project__abbreviation">Аббревиатура</div>
+                        </div>
                         <div className="title-project__checkmark">
                            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path d="M1.41 0.589996L6 5.17L10.59 0.589996L12 2L6 8L0 2L1.41 0.589996Z" fill="white" />

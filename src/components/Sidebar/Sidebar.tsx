@@ -2,9 +2,11 @@ import React from 'react'
 
 const Sidebar = () => {
    return (
-      <div>
+      <aside className='sidebar'>
+         <div className="sidebar__container">
 
-      </div>
+         </div>
+      </aside>
    )
 }
 

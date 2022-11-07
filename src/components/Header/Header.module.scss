@@ -1,3 +1,10 @@
+@mixin hover-increase-effect {
+   &:hover {
+      transition: 0.2s all ease-in;
+      transform: scale(1.04);
+   }
+}
+
 .header {
    .header__container {
       .header__up {
@@ -5,8 +12,11 @@
          height: 44px;
          .up__menu {
             padding: 14px 27px 14px 24px;
+            transition: 0.3s all ease-in;
+            @include hover-increase-effect;
          }
          .up__button {
+            @include hover-increase-effect;
             padding: 15px 34px 14px 0;
          }
          .up__selectors {
@@ -22,15 +32,31 @@
       }
       .header__down {
          display: flex;
+         height: 43px;
          .down__title-project {
-            .title-project__title {
-            }
-            .title-project__abbreviation {
+            width: 234px;
+            color: #a1a1aa;
+            padding: 8px 13px 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            .title-project__info {
+               .title-project__title {
+                  font-size: 14px;
+                  line-height: 16px;
+               }
+               .title-project__abbreviation {
+                  font-size: 10px;
+                  line-height: 12px;
+               }
             }
             .title-project__checkmark {
+               @include hover-increase-effect;
             }
          }
          .down__main-title {
+            padding: 11px 15px 12px 15px;
+            font-size: 18px;
+            line-height: 21px;
          }
       }
    }
