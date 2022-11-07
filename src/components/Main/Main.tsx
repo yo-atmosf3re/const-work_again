@@ -2,8 +2,10 @@ import React from 'react'
 
 const Main = () => {
    return (
-      <div>
-
+      <div className='main'>
+         <div className="main__container">
+            Main
+         </div>
       </div>
    )
 }

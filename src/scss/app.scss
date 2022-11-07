@@ -9,7 +9,11 @@ body {
    font-weight: 400;
    background-color: #27272a;
    color: white;
+   height: 100%;
 }
 
 .wrapper {
+   .wrapper__container {
+      display: flex;
+   }
 }

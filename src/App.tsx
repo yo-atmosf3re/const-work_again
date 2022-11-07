@@ -21,10 +21,10 @@ function App() {
     <div className='wrapper'>
       <ThemeProvider theme={theme}>
         <Header />
-        <Container fixed>
+        <div className="wrapper__container">
           <Sidebar />
           <Main />
-        </Container>
+        </div>
       </ThemeProvider>
     </div>
   );

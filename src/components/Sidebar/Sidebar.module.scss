@@ -1,0 +1,24 @@
+.sidebar {
+   border-right: 1px solid #414144;
+   flex: 0 0 234px;
+   min-height: 100vh;
+   .sidebar__container {
+      .container__title-selectors {
+         display: flex;
+         flex-direction: column;
+         .title-selectors__item {
+            display: flex;
+            height: 24.25px;
+            padding: 7.75px 0 0px 22.75px;
+            .title-selectors__title {
+               font-size: 14px;
+               line-height: 16px;
+               padding-left: 16.75px;
+               padding-top: 1px;
+            }
+            .title-selectors__icon {
+            }
+         }
+      }
+   }
+}

@@ -36,10 +36,11 @@
          .down__title-project {
             width: 234px;
             color: #a1a1aa;
-            padding: 8px 13px 8px 20px;
             display: flex;
+            flex: 0 0 auto;
             justify-content: space-between;
             .title-project__info {
+               padding: 8px 68px 8px 20px;
                .title-project__title {
                   font-size: 14px;
                   line-height: 16px;
@@ -50,10 +51,12 @@
                }
             }
             .title-project__checkmark {
+               padding: 6px 13px 18px 0;
                @include hover-increase-effect;
             }
          }
          .down__main-title {
+            flex: 0 0 auto;
             padding: 11px 15px 12px 15px;
             font-size: 18px;
             line-height: 21px;

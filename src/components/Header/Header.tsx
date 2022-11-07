@@ -6,15 +6,19 @@ const SelectorsFromHeader = [
    { id: 2, title: 'Управление', },
 ]
 
+const BorderStyleRigth = { borderRight: 1, borderColor: '#414144' }
+const BorderStyleBottom = { borderBottom: 1, borderColor: '#414144' }
+const BorderStyleBottomWithFG = { borderBottom: 1, borderColor: '#414144', flexGrow: 2, }
+
 const Header = () => {
    const [selected, setSelected] = useState(0);
    const onClickSwitchSelected = (i: number) => setSelected(i)
    return (
       <div className='header'>
          <div className="header__container">
-            <Box sx={{ flexGrow: 2, borderBottom: 1, borderColor: '#414144' }}>
+            <Box sx={BorderStyleBottomWithFG}>
                <AppBar elevation={0} color='secondary' position="relative">
-                  <Box sx={{ borderBottom: 1, borderColor: '#414144' }} className="header__up">
+                  <Box sx={BorderStyleBottom} className="header__up">
                      <div className="up__menu">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M0 4H4V0H0V4ZM6 16H10V12H6V16ZM0 16H4V12H0V16ZM0 10H4V6H0V10ZM6 10H10V6H6V10ZM12 0V4H16V0H12ZM6 4H10V0H6V4ZM12 10H16V6H12V10ZM12 16H16V12H12V16Z" fill="#A1A1AA" />
@@ -39,7 +43,7 @@ const Header = () => {
                      </div>
                   </Box>
                   <Box className="header__down">
-                     <Box sx={{ borderRight: 1, borderColor: '#414144' }} className="down__title-project">
+                     <Box sx={BorderStyleRigth} className="down__title-project">
                         <div className='title-project__info'>
                            <div className="title-project__title">Название проекта</div>
                            <div className="title-project__abbreviation">Аббревиатура</div>
@@ -50,7 +54,7 @@ const Header = () => {
                            </svg>
                         </div>
                      </Box>
-                     <Box sx={{ borderRight: 1, borderColor: '#414144' }} className="down__main-title">
+                     <Box sx={BorderStyleRigth} className="down__main-title">
                         Строительно-монтажные работы
                      </Box>
                   </Box>
