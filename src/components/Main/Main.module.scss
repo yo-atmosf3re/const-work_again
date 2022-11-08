@@ -2,5 +2,23 @@
    flex: 1 1 1686px;
    background-color: #202124;
    .main__container {
+      .container__title-columns {
+         display: flex;
+         font-size: 14px;
+         line-height: 130%;
+         letter-spacing: 0.1px;
+         height: 42px;
+         div:nth-child(1) {
+            width: 110px;
+         }
+         div:nth-child(2) {
+            width: 757px;
+         }
+         div:nth-child(3, 4, 5, 6) {
+            width: 200px;
+         }
+         .title-columns__items {
+         }
+      }
    }
 }
