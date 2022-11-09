@@ -18,7 +18,31 @@
       left: 28px;
       top: 36px;
    }
-   div {
-      @include label-for-level;
+   svg:nth-child(n + 4) {
+      display: none;
+      z-index: 10;
+      position: absolute;
+   }
+   div:nth-child(1) {
+      display: none;
+   }
+   &:hover {
+      .level-two__label {
+         @include label-for-level;
+         width: 75px;
+         top: 16px;
+         left: 14px;
+      }
+      svg:nth-child(n + 4) {
+         display: inline;
+         top: 20px;
+      }
+      svg:nth-child(4) {
+         left: 45px;
+      }
+      svg:nth-child(5) {
+         left: 69px;
+         top: 21px;
+      }
    }
 }

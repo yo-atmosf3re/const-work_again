@@ -1,3 +1,4 @@
+@import "../../../scss/variables";
 .row__third-level {
    position: relative;
    width: 99px;
@@ -7,13 +8,16 @@
       left: 28px;
    }
    svg:nth-child(2) {
-      position: absolute;
-      top: 29px;
-      left: 28px;
+      @include svg-2-from-level-thrd-rest;
    }
    svg:nth-child(3) {
-      position: absolute;
-      left: 40px;
-      top: 22px;
+      @include svg-3-from-level-thrd-rest;
    }
+   svg:nth-child(4) {
+      @include svg-4-from-level-thrd-rest;
+   }
+   div:nth-child(1) {
+      @include label-for-level-not-active;
+   }
+   @include hover-for-rest-and-third-level;
 }

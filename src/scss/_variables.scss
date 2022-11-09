@@ -1,8 +1,49 @@
 @mixin label-for-level {
-   display: none;
    position: absolute;
    border-radius: 5px;
    height: 28px;
    width: 100px;
    background-color: #414144;
+}
+
+@mixin hover-for-rest-and-third-level {
+   &:hover {
+      div {
+         @include label-for-level;
+         top: 15px;
+         left: 35px;
+         width: 50px;
+      }
+      svg:nth-child(4) {
+         display: inline;
+         top: 21px;
+         left: 65px;
+      }
+   }
+}
+
+@mixin svg-2-from-level-thrd-rest {
+   position: absolute;
+   top: 29px;
+   left: 28px;
+   z-index: 10;
+}
+
+@mixin svg-3-from-level-thrd-rest {
+   position: absolute;
+   z-index: 10;
+   left: 40px;
+   top: 22px;
+}
+
+@mixin svg-4-from-level-thrd-rest {
+   position: absolute;
+   display: none;
+   z-index: 10;
+}
+
+@mixin label-for-level-not-active {
+   display: none;
+   position: absolute;
+   z-index: 10;
 }
