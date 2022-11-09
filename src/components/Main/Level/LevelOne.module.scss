@@ -1,0 +1,14 @@
+.row__level-one {
+   position: relative;
+   width: 99px;
+   svg:nth-child(1) {
+      position: absolute;
+      top: 21px;
+      z-index: 10;
+   }
+   svg:nth-child(2) {
+      position: absolute;
+      top: 36px;
+      left: 7.5px;
+   }
+}

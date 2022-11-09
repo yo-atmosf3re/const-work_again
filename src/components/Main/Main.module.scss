@@ -2,8 +2,6 @@
    flex: 1 1 1686px;
    background-color: #202124;
    .main__container {
-      padding-left: 10px;
-      padding-right: 9px;
       .container__title-columns {
          display: flex;
          flex: 1 1 1666px;
@@ -12,9 +10,10 @@
          letter-spacing: 0.1px;
          height: 42px;
          border-bottom: 1px solid #414144;
-         padding-left: 12px;
          div:nth-child(1) {
             width: 110px;
+            position: relative;
+            left: 12px;
          }
          div:nth-child(2) {
             width: 757px;
@@ -25,6 +24,40 @@
          .title-columns__items {
             align-self: center;
             color: #a1a1aa;
+         }
+      }
+      .container__items {
+         div:last-child {
+            border-bottom: none;
+         }
+         .items__row {
+            font-size: 14px;
+            line-height: 130%;
+            letter-spacing: 0.1px;
+            display: flex;
+            padding-left: 12px;
+            border-bottom: 1px solid #414144;
+
+            height: 60px;
+            align-items: center;
+            div:nth-child(1) {
+               align-self: start;
+            }
+            .row__title-work {
+               flex: 0 1 757px;
+            }
+            .row__salary {
+               flex: 0 1 200px;
+            }
+            .row__equipment-costs {
+               flex: 0 1 200px;
+            }
+            .row__overheads {
+               flex: 0 1 200px;
+            }
+            .row__estimated {
+               flex: 0 1 200px;
+            }
          }
       }
    }

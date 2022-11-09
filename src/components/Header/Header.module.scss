@@ -6,10 +6,14 @@
 }
 
 .header {
+   flex-grow: 1;
+   flex-shrink: 1;
    .header__container {
       .header__up {
          display: flex;
          height: 44px;
+         flex-grow: 1;
+         flex-shrink: 1;
          .up__menu {
             padding: 14px 27px 14px 24px;
             transition: 0.3s all ease-in;

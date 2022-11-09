@@ -1,4 +1,5 @@
 import React from 'react'
+import LevelOne from './Level/LevelOne'
 
 const TitleColumnsItem = [
    'Уровень',
@@ -24,16 +25,18 @@ const Main = () => {
                   <div className="title-columns__items">{t}</div>
                )}
             </div>
-            {DataRow.map(t =>
-               <div className="container__row">
-                  <div className="row__level-one"></div>
-                  <div className="row__title-work">{t.rowName}</div>
-                  <div className="row__salary">{t.salary}</div>
-                  <div className="row__equipment-costs">{t.equipment}</div>
-                  <div className="row__overheads">{t.overheads}</div>
-                  <div className="row__estimated">{t.estimated}</div>
-               </div>
-            )}
+            <div className='container__items'>
+               {DataRow.map(t =>
+                  <div className="items__row">
+                     <LevelOne />
+                     <div className="row__title-work">{t.rowName}</div>
+                     <div className="row__salary">{t.salary}</div>
+                     <div className="row__equipment-costs">{t.equipment}</div>
+                     <div className="row__overheads">{t.overheads}</div>
+                     <div className="row__estimated">{t.estimated}</div>
+                  </div>
+               )}
+            </div>
          </div>
       </div>
    )
