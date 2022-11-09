@@ -8,6 +8,12 @@ const TitleColumnsItem = [
    'Накладные расходы',
    'Сметная прибыль',
 ]
+const DataRow = [
+   { rowName: 'Южная строительная площадка', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', },
+   { rowName: 'Фундаментальные работы', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', },
+   { rowName: 'Статья работы № 1', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '189 122,5', },
+   { rowName: 'Статья работы № 2', salary: '38 200', equipment: "1 200", overheads: '850,', estimated: '1 020 000', },
+]
 
 const Main = () => {
    return (
@@ -18,38 +24,16 @@ const Main = () => {
                   <div className="title-columns__items">{t}</div>
                )}
             </div>
-            <div className="container__first-column">
-               <div className="first-column__level-one"></div>
-               <div className="first-column__title-work"></div>
-               <div className="first-column__salary"></div>
-               <div className="first-column__equipment-costs"></div>
-               <div className="first-column__overheads"></div>
-               <div className="first-column__estimated"></div>
-            </div>
-            <div className="container__second-column">
-               <div className="second-column__level-one"></div>
-               <div className="second-column__title-work"></div>
-               <div className="second-column__salary"></div>
-               <div className="second-column__equipment-costs"></div>
-               <div className="second-column__overheads"></div>
-               <div className="second-column__estimated"></div>
-            </div>
-            <div className="container__third-column">
-               <div className="third-column__level-one"></div>
-               <div className="third-column__title-work"></div>
-               <div className="third-column__salary"></div>
-               <div className="third-column__equipment-costs"></div>
-               <div className="third-column__overheads"></div>
-               <div className="third-column__estimated"></div>
-            </div>
-            <div className="container__fourth-column">
-               <div className="fourth-column__level-one"></div>
-               <div className="fourth-column__title-work"></div>
-               <div className="fourth-column__salary"></div>
-               <div className="fourth-column__equipment-costs"></div>
-               <div className="fourth-column__overheads"></div>
-               <div className="fourth-column__estimated"></div>
-            </div>
+            {DataRow.map(t =>
+               <div className="container__row">
+                  <div className="row__level-one"></div>
+                  <div className="row__title-work">{t.rowName}</div>
+                  <div className="row__salary">{t.salary}</div>
+                  <div className="row__equipment-costs">{t.equipment}</div>
+                  <div className="row__overheads">{t.overheads}</div>
+                  <div className="row__estimated">{t.estimated}</div>
+               </div>
+            )}
          </div>
       </div>
    )
