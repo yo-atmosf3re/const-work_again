@@ -1,5 +1,8 @@
 import React from 'react'
 import LevelOne from './Level/LevelOne'
+import LevelRest from './Level/LevelRest'
+import LevelThird from './Level/LevelThird'
+import LevelTwo from './Level/LevelTwo'
 
 const TitleColumnsItem = [
    'Уровень',
@@ -9,11 +12,12 @@ const TitleColumnsItem = [
    'Накладные расходы',
    'Сметная прибыль',
 ]
+
 const DataRow = [
-   { rowName: 'Южная строительная площадка', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', },
-   { rowName: 'Фундаментальные работы', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', },
-   { rowName: 'Статья работы № 1', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '189 122,5', },
-   { rowName: 'Статья работы № 2', salary: '38 200', equipment: "1 200", overheads: '850,', estimated: '1 020 000', },
+   { rowName: 'Южная строительная площадка', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', icon: <LevelOne /> },
+   { rowName: 'Фундаментальные работы', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', icon: <LevelTwo /> },
+   { rowName: 'Статья работы № 1', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '189 122,5', icon: <LevelThird /> },
+   { rowName: 'Статья работы № 2', salary: '38 200', equipment: "1 200", overheads: '850,', estimated: '1 020 000', icon: <LevelRest /> },
 ]
 
 const Main = () => {
@@ -28,7 +32,7 @@ const Main = () => {
             <div className='container__items'>
                {DataRow.map(t =>
                   <div className="items__row">
-                     <LevelOne />
+                     {t.icon}
                      <div className="row__title-work">{t.rowName}</div>
                      <div className="row__salary">{t.salary}</div>
                      <div className="row__equipment-costs">{t.equipment}</div>

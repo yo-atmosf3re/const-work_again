@@ -1,3 +1,5 @@
+@import "../../../scss/variables";
+
 .row__level-one {
    position: relative;
    width: 99px;
@@ -10,5 +12,38 @@
       position: absolute;
       top: 36px;
       left: 7.5px;
+   }
+   svg:nth-child(n + 3) {
+      display: none;
+      z-index: 10;
+      position: absolute;
+   }
+   div:nth-child(1) {
+      @include label-for-level;
+   }
+   &:hover {
+      .level-one__label {
+         position: absolute;
+         border-radius: 5px;
+         height: 28px;
+         width: 100px;
+         background-color: #414144;
+         z-index: 8;
+         top: 14px;
+         left: -5px;
+      }
+      svg:nth-child(n + 3) {
+         display: inline;
+         top: 21px;
+      }
+      svg:nth-child(3) {
+         left: 25px;
+      }
+      svg:nth-child(4) {
+         left: 50px;
+      }
+      svg:nth-child(5) {
+         left: 73px;
+      }
    }
 }

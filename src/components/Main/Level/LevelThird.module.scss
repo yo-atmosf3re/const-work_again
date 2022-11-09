@@ -1,9 +1,9 @@
-.row__rest-level {
+.row__third-level {
    position: relative;
    width: 99px;
    svg:nth-child(1) {
       position: absolute;
-      top: -24px;
+      top: -16px;
       left: 28px;
    }
    svg:nth-child(2) {
@@ -15,10 +15,5 @@
       position: absolute;
       left: 40px;
       top: 22px;
-   }
-   svg:nth-child(4) {
-      position: absolute;
-      left: 28px;
-      top: -31px;
    }
 }
