@@ -30,8 +30,8 @@ const Header = () => {
                         </svg>
                      </div>
                      <div className="up__selectors">
-                        {SelectorsFromHeader.map(s =>
-                           <div>
+                        {SelectorsFromHeader.map((s) =>
+                           <div key={s.id}>
                               <div
                                  style={selected === s.id ? { borderBottom: '2px solid white', boxSizing: 'border-box' } : { borderBottom: 'none', boxSizing: 'border-box' }} className="selectors__title"
                                  onClick={() => { onClickSwitchSelected(s.id) }}>

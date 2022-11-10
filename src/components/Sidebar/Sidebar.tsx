@@ -35,8 +35,9 @@ const Sidebar = () => {
       <aside className='sidebar'>
          <Box className="sidebar__container">
             <div className="container__title-selectors">
-               {SidebarTitleSelectors.map(s => {
+               {SidebarTitleSelectors.map((s, i) => {
                   return <div
+                     key={i}
                      onClick={() => { onClickSwitchSelected(s.id) }}
                      className='title-selectors__item'
                      style={selected === s.id ? BackgroundColorNew : BackgroundColorOld}>
