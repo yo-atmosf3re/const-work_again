@@ -6,6 +6,8 @@
    background-color: #414144;
 }
 
+$border-classic: 1px solid #414144;
+
 @mixin hover-for-rest-and-third-level {
    &:hover {
       div {

@@ -1,5 +1,7 @@
+@import "../../scss/variables";
+
 .sidebar {
-   border-right: 1px solid #414144;
+   border-right: $border-classic;
    flex: 0 0 234px;
    min-height: 100vh;
    .sidebar__container {

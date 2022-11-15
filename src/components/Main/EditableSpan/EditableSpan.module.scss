@@ -1,6 +1,15 @@
 .row__text-field {
-   border: 1px solid #414144;
+   border: $border-classic;
    background-color: inherit;
-   color: inherit;
+   color: #71717a;
    height: 36px;
+   border-radius: 6px;
+   padding-left: 10px;
+   display: flex;
+   width: calc(100% - 30px);
+   &:focus {
+      outline: 0;
+   }
+   input {
+   }
 }

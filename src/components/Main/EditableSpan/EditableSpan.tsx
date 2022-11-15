@@ -1,13 +1,12 @@
 import React, { ChangeEvent, useState } from 'react'
 import { TextField } from "@mui/material";
+import { EditableSpanPropsType } from './EditableSpan.types';
 
-type EditableSpanPropsType = {
-   value: string
-}
+
 
 const EditableSpan: React.FC<EditableSpanPropsType> = ({ value }) => {
    const [editMode, setEditMode] = useState<boolean>(false)
-   const [title, setTitle] = useState<string>('')
+   const [title, setTitle] = useState<string>(value)
 
    const turnEditMode = () => {
       setEditMode(true)
@@ -19,11 +18,11 @@ const EditableSpan: React.FC<EditableSpanPropsType> = ({ value }) => {
       setTitle(title)
    }
 
-   const handleEnterPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-      e.key === 'Enter' && setEditMode(false)
-   }
+   const handleEnterPress = (e: React.KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && setEditMode(false)
 
-   const onChangeTitleHandler = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.currentTarget.value)
+   const onChangeTitleHandler = (e: ChangeEvent<HTMLInputElement>) => {
+      e.currentTarget.value === '' ? setTitle('Введите значение') : setTitle(e.currentTarget.value)
+   }
 
    return (
       editMode
@@ -39,7 +38,7 @@ const EditableSpan: React.FC<EditableSpanPropsType> = ({ value }) => {
          :
          <span
             onDoubleClick={turnEditMode}>
-            {value}
+            {title}
          </span>
    )
 }
