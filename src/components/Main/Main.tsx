@@ -1,8 +1,7 @@
-import React from 'react'
-import LevelOne from './Level/LevelOne'
-import LevelRest from './Level/LevelRest'
-import LevelThird from './Level/LevelThird'
-import LevelTwo from './Level/LevelTwo'
+import axios from 'axios';
+import React, { useCallback, useEffect, useState } from 'react'
+import EditableSpan from './EditableSpan/EditableSpan';
+import { LevelOne, LevelTwo, LevelThird, LevelRest } from './Level';
 
 const TitleColumnsItem = [
    'Уровень',
@@ -24,12 +23,35 @@ const DataRow = [
    { id: 0, rowName: 'Южная строительная площадка', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', },
    { id: 1, rowName: 'Фундаментальные работы', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', },
    { id: 2, rowName: 'Статья работы № 1', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '189 122,5', },
-   { id: 3, rowName: 'Статья работы № 2', salary: '38 200', equipment: "1 200", overheads: '850,', estimated: '1 020 000', },
-   // { id: 4, rowName: 'Статья работы № 2', salary: '38 200', equipment: "1 200", overheads: '850,', estimated: '1 020 000' },
+   { id: 3, rowName: 'Статья работы № 2', salary: '38 200', equipment: "1 200", overheads: '850', estimated: '1 020 000', },
 ]
 
 const Main = () => {
-   DataRow.length > 4 && [...IconList, { id: }]
+   const eId = 2516;
+   useEffect(() => {
+      axios.get(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eId}/row/list`)
+   }, [])
+   const fetchEntity = async () => {
+      const eId = await axios.post('http://185.244.172.108:8081/v1/outlay-rows/entity/create')
+      // const list = await axios.get(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eId}/row/list`)\ 
+      // axios.post(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eId}/row/create`)
+   }
+   fetchEntity()
+   // const eId = axios.post('http://185.244.172.108:8081/v1/outlay-rows/entity/create')
+   // axios.get(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eId}/row/list`)
+   // axios.post(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eId}/row/create`)
+   // axios.post('http://185.244.172.108:8081/v1/outlay-rows/entity/create')
+   // fetch('http://185.244.172.108:8081//v1/outlay-rows/entity/create', {
+   //    method: 'POST',
+   //    mode: 'cors',
+   //    headers: {
+   //       "Content-Type": "application/json",
+   //       "Accept": "application/json",
+   //    },
+   // })
+   // const onTitleChangeHandler = useCallback((newValue: string) => {
+   //    props.changeTaskTitle(props.task.id, newValue, props.todolistId)
+   // }, [props.changeTaskTitle, props.task.id, props.todolistId])
    return (
       <div className='main'>
          <div className="main__container">
@@ -41,12 +63,15 @@ const Main = () => {
             <div className='container__items'>
                {DataRow.map((t, i) => {
                   return <div key={i} className="items__row">
-                     {DataRow.length <= 4 ? IconList[t.id].icon : <LevelRest />}
-                     <div className="row__title-work">{t.rowName}</div>
+                     {
+                        IconList.map(i => t.id === i.id && i.icon)
+                     }
+                     <div className="row__title-work">{<EditableSpan value={t.rowName} />}</div>
                      <div className="row__salary">{t.salary}</div>
                      <div className="row__equipment-costs">{t.equipment}</div>
                      <div className="row__overheads">{t.overheads}</div>
                      <div className="row__estimated">{t.estimated}</div>
+                     {/* <EditableSpan value={'sdsd'} /> */}
                   </div>
                }
                )}
