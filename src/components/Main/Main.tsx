@@ -27,31 +27,7 @@ const DataRow = [
 ]
 
 const Main = () => {
-   const eId = 2516;
-   useEffect(() => {
-      axios.get(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eId}/row/list`)
-   }, [])
-   const fetchEntity = async () => {
-      const eId = await axios.post('http://185.244.172.108:8081/v1/outlay-rows/entity/create')
-      // const list = await axios.get(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eId}/row/list`)\ 
-      // axios.post(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eId}/row/create`)
-   }
-   fetchEntity()
-   // const eId = axios.post('http://185.244.172.108:8081/v1/outlay-rows/entity/create')
-   // axios.get(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eId}/row/list`)
-   // axios.post(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eId}/row/create`)
-   // axios.post('http://185.244.172.108:8081/v1/outlay-rows/entity/create')
-   // fetch('http://185.244.172.108:8081//v1/outlay-rows/entity/create', {
-   //    method: 'POST',
-   //    mode: 'cors',
-   //    headers: {
-   //       "Content-Type": "application/json",
-   //       "Accept": "application/json",
-   //    },
-   // })
-   // const onTitleChangeHandler = useCallback((newValue: string) => {
-   //    props.changeTaskTitle(props.task.id, newValue, props.todolistId)
-   // }, [props.changeTaskTitle, props.task.id, props.todolistId])
+
    return (
       <div className='main'>
          <div className="main__container">
@@ -71,7 +47,7 @@ const Main = () => {
                      <div className="row__equipment-costs">{t.equipment}</div>
                      <div className="row__overheads">{t.overheads}</div>
                      <div className="row__estimated">{t.estimated}</div>
-                     {/* <EditableSpan value={'sdsd'} /> */}
+
                   </div>
                }
                )}
