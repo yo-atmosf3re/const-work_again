@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useCallback, useEffect, useState } from 'react'
+import React from 'react'
 import EditableSpan from './EditableSpan/EditableSpan';
 import { LevelOne, LevelTwo, LevelThird, LevelRest } from './Level';
 
@@ -20,14 +20,13 @@ const IconList = [
 ]
 
 const DataRow = [
-   { id: 0, rowName: 'Южная строительная площадка', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', },
-   { id: 1, rowName: 'Фундаментальные работы', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', },
-   { id: 2, rowName: 'Статья работы № 1', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '189 122,5', },
-   { id: 3, rowName: 'Статья работы № 2', salary: '38 200', equipment: "1 200", overheads: '850', estimated: '1 020 000', },
+   { id: 0, rowName: 'Южная строительная площадка', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', icon: IconList[0].icon },
+   { id: 1, rowName: 'Фундаментальные работы', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', icon: <LevelTwo /> },
+   { id: 2, rowName: 'Статья работы № 1', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '189 122,5', icon: <LevelThird /> },
+   { id: 3, rowName: 'Статья работы № 2', salary: '38 200', equipment: "1 200", overheads: '850,', estimated: '1 020 000', icon: <LevelRest /> },
 ]
 
 const Main = () => {
-
    return (
       <div className='main'>
          <div className="main__container">
@@ -38,10 +37,9 @@ const Main = () => {
             </div>
             <div className='container__items'>
                {DataRow.map((t, i) => {
+                  console.log(i)
                   return <div key={i} className="items__row">
-                     {
-                        IconList.map(i => t.id === i.id && i.icon)
-                     }
+                     {IconList.map(i => t.id === i.id && i.icon)}
                      <div className="row__title-work">{<EditableSpan value={t.rowName} />}</div>
                      <div className="row__salary">{t.salary}</div>
                      <div className="row__equipment-costs">{t.equipment}</div>
