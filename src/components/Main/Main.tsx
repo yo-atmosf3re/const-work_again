@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { divedesNumbers } from '../../utils/divedesNumbers';
 import EditableSpan from './EditableSpan/EditableSpan';
 import { LevelOne, LevelTwo, LevelThird, LevelRest } from './Level';
 
@@ -20,14 +21,17 @@ export const IconList = [
 ]
 
 const DataRow = [
-   { id: 0, rowName: 'Южная строительная площадка', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', icon: IconList[0].icon },
-   { id: 1, rowName: 'Фундаментальные работы', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '1 209 122,5', icon: IconList[1].icon },
-   { id: 2, rowName: 'Статья работы № 1', salary: '20 348', equipment: "1 750", overheads: '108,07', estimated: '189 122,5', icon: IconList[2].icon },
-   { id: 3, rowName: 'Статья работы № 2', salary: '38 200', equipment: "1 200", overheads: '850', estimated: '1 020 000', icon: IconList[3].icon },
+   { id: 0, rowName: 'Южная строительная площадка', salary: divedesNumbers(20348), equipment: divedesNumbers(1750), overheads: divedesNumbers(108.07), estimated: divedesNumbers(1209122.5), icon: IconList[0].icon },
+   { id: 1, rowName: 'Фундаментальные работы', salary: divedesNumbers(20348), equipment: divedesNumbers(1750), overheads: divedesNumbers(108.07), estimated: divedesNumbers(1209122.5), icon: IconList[1].icon },
+   { id: 2, rowName: 'Статья работы № 1', salary: divedesNumbers(20348), equipment: divedesNumbers(1750), overheads: divedesNumbers(108.07), estimated: divedesNumbers(189122.5), icon: IconList[2].icon },
+   { id: 3, rowName: 'Статья работы № 2', salary: divedesNumbers(38200), equipment: divedesNumbers(1200), overheads: divedesNumbers(850), estimated: divedesNumbers(1020000), icon: IconList[3].icon },
 ]
 
 const Main = () => {
-
+   useEffect(() => {
+      const eID = axios.post(`http://185.244.172.108:8081/v1/outlay-rows/entity/create`)
+      axios.get(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eID}/row/list`)
+   }, [])
 
    return (
       <div className='main'>
