@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { tableAPI } from '../../api/Api';
 import { divedesNumbers } from '../../utils/divedesNumbers';
 import EditableSpan from './EditableSpan/EditableSpan';
 import { LevelOne, LevelTwo, LevelThird, LevelRest } from './Level';
@@ -28,106 +29,124 @@ const DataRow = [
 ]
 
 const Main = () => {
-   // useEffect(() => {
-   //    const eID = axios.post(`http://185.244.172.108:8081/v1/outlay-rows/entity/create`)
-   //    axios.get(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eID}/row/list`)
-   // }, [])
-   const url = `http://185.244.172.108:8081/v1/outlay-rows/entity/create`
-
    useEffect(() => {
-      const fetchData = async () => {
-         try {
-            // ** Create entity - completed
-            const entityCreate = await fetch(url, {
-               method: "POST",
-               mode: "cors",
-               headers: {
-                  "Content-Type": "application/json",
-                  "Accept": "application/json",
-               },
-            })
-            const entity = await entityCreate.json()
-            const eID = entity.id
-            console.log(entity, 'Creating entity')
-            // ** Create row inside the entity - completed
-            const createRowInEntity = await fetch(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eID}/row/create`, {
-               method: 'POST',
-               mode: "cors",
-               headers: {
-                  "Content-Type": "application/json",
-                  "Accept": "application/json",
-               },
-               body: JSON.stringify({
-                  equipmentCosts: 0,
-                  estimatedProfit: 0,
-                  machineOperatorSalary: 0,
-                  mainCosts: 0,
-                  materials: 0,
-                  mimExploitation: 0,
-                  overheads: 0,
-                  parentId: null,
-                  rowName: 'Test',
-                  salary: 0,
-                  supportCosts: 0
-               })
-            })
-            const newRow = await createRowInEntity.json()
-            console.log(newRow, 'New row')
-            // ** Get data about entity - completed
-            const getData = await fetch(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eID}/row/list`, {
-               method: 'GET',
-               mode: "cors",
-               headers: {
-                  "Content-Type": "application/json",
-                  "Accept": "application/json",
-               },
-            })
-            const getDataResult = await getData.json()
-            console.log(getDataResult, 'Data row')
-            const rID = getDataResult.map((m: any) => m.id)
-            console.log(rID[0], 'Row Id')
-            // ** Update row - completed
-            const updateRow = await fetch(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eID}/row/${rID[0]}/update`, {
-               method: 'POST',
-               mode: "cors",
-               headers: {
-                  "Content-Type": "application/json",
-                  "Accept": "application/json",
-               },
-               body: JSON.stringify({
-                  equipmentCosts: 1,
-                  estimatedProfit: 1,
-                  machineOperatorSalary: 1,
-                  mainCosts: 1,
-                  materials: 1,
-                  mimExploitation: 0,
-                  overheads: 0,
-                  parentId: null,
-                  rowName: 'Test 1',
-                  salary: 0,
-                  supportCosts: 0
-               })
-            })
-            const updateResult = await updateRow.json()
-            console.log(updateResult, 'Updating row')
-            // ** Delete row - completed
-            const deleteRow = await fetch(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eID}/row/${rID}/delete`, {
-               method: 'DELETE',
-               mode: "cors",
-               headers: {
-                  "Content-Type": "application/json",
-                  "Accept": "application/json",
-               },
-            })
-            const deleteRowResponse = await deleteRow.json()
-            console.log(deleteRowResponse, 'Delete row')
-            console.log(getDataResult, 'Data row again')
-         } catch (error) {
-            console.log(error)
-         }
+      const fetchEntity = async () => {
+         const eId: number = await tableAPI.createEntity()
+         console.log(eId, 'CreateEntity')
+         const rows = await tableAPI.getTreeRows(eId)
+         console.log(rows, 'getTreeRows')
+         const createNewRow = await tableAPI.createRow(eId, {
+            equipmentCosts: 0,
+            estimatedProfit: 0,
+            machineOperatorSalary: 0,
+            mainCosts: 0,
+            materials: 0,
+            mimExploitation: 0,
+            parentId: null,
+            rowName: 'New row',
+            salary: 0,
+            supportCosts: 0,
+         })
+         console.log(createNewRow, 'Row')
+         // const updateRow = await tableAPI.updateRow(eId,)
       }
-      fetchData()
+      fetchEntity()
    }, [])
+
+   // useEffect(() => {
+   //    const fetchData = async () => {
+   //       try {
+   //          // ** Create entity - completed
+   //          const entityCreate = await fetch(`http://185.244.172.108:8081/v1/outlay-rows/entity/create`, {
+   //             method: "POST",
+   //             mode: "cors",
+   //             headers: {
+   //                "Content-Type": "application/json",
+   //                "Accept": "application/json",
+   //             },
+   //          })
+   //          const entity = await entityCreate.json()
+   //          const eID = entity.id
+   //          console.log(entity, 'Creating entity')
+   //          // ** Create row inside the entity - completed
+   //          const createRowInEntity = await fetch(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eID}/row/create`, {
+   //             method: 'POST',
+   //             mode: "cors",
+   //             headers: {
+   //                "Content-Type": "application/json",
+   //                "Accept": "application/json",
+   //             },
+   //             body: JSON.stringify({
+   //                equipmentCosts: 0,
+   //                estimatedProfit: 0,
+   //                machineOperatorSalary: 0,
+   //                mainCosts: 0,
+   //                materials: 0,
+   //                mimExploitation: 0,
+   //                overheads: 0,
+   //                parentId: null,
+   //                rowName: 'Test',
+   //                salary: 0,
+   //                supportCosts: 0
+   //             })
+   //          })
+   //          const newRow = await createRowInEntity.json()
+   //          console.log(newRow, 'New row')
+   //          // ** Get data about entity - completed
+   //          const getData = await fetch(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eID}/row/list`, {
+   //             method: 'GET',
+   //             mode: "cors",
+   //             headers: {
+   //                "Content-Type": "application/json",
+   //                "Accept": "application/json",
+   //             },
+   //          })
+   //          const getDataResult = await getData.json()
+   //          console.log(getDataResult, 'Data row')
+   //          const rID = getDataResult.map((m: any) => m.id)
+   //          console.log(rID[0], 'Row Id')
+   //          // ** Update row - completed
+   //          const updateRow = await fetch(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eID}/row/${rID[0]}/update`, {
+   //             method: 'POST',
+   //             mode: "cors",
+   //             headers: {
+   //                "Content-Type": "application/json",
+   //                "Accept": "application/json",
+   //             },
+   //             body: JSON.stringify({
+   //                equipmentCosts: 1,
+   //                estimatedProfit: 1,
+   //                machineOperatorSalary: 1,
+   //                mainCosts: 1,
+   //                materials: 1,
+   //                mimExploitation: 0,
+   //                overheads: 0,
+   //                parentId: null,
+   //                rowName: 'Test 1',
+   //                salary: 0,
+   //                supportCosts: 0
+   //             })
+   //          })
+   //          const updateResult = await updateRow.json()
+   //          console.log(updateResult, 'Updating row')
+   //          // ** Delete row - completed
+   //          const deleteRow = await fetch(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eID}/row/${rID}/delete`, {
+   //             method: 'DELETE',
+   //             mode: "cors",
+   //             headers: {
+   //                "Content-Type": "application/json",
+   //                "Accept": "application/json",
+   //             },
+   //          })
+   //          const deleteRowResponse = await deleteRow.json()
+   //          console.log(deleteRowResponse, 'Delete row')
+   //          console.log(getDataResult, 'Data row again')
+   //       } catch (error) {
+   //          console.log(error)
+   //       }
+   //    }
+   //    fetchData()
+   // }, [])
 
 
    return (
