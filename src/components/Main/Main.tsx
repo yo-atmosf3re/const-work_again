@@ -29,29 +29,80 @@ const DataRow = [
 ]
 
 const Main = () => {
-   useEffect(() => {
-      const fetchEntity = async () => {
-         const eId: number = await tableAPI.createEntity()
-         console.log(eId, 'CreateEntity')
-         const rows = await tableAPI.getTreeRows(eId)
-         console.log(rows, 'getTreeRows')
-         const createNewRow = await tableAPI.createRow(eId, {
-            equipmentCosts: 0,
-            estimatedProfit: 0,
-            machineOperatorSalary: 0,
-            mainCosts: 0,
-            materials: 0,
-            mimExploitation: 0,
-            parentId: null,
-            rowName: 'New row',
-            salary: 0,
-            supportCosts: 0,
-         })
-         console.log(createNewRow, 'Row')
-         // const updateRow = await tableAPI.updateRow(eId,)
-      }
-      fetchEntity()
-   }, [])
+   // useEffect(() => {
+   //    const fetchEntity = async () => {
+   //       try {
+   //          const eId: number = await tableAPI.createEntity()
+   //          console.log(eId, 'CreateEntity')
+
+   //          const rows = await tableAPI.getTreeRows(eId)
+   //          console.log(rows, 'getTreeRows')
+
+   //          const createRowInEntity = await fetch(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eId}/row/create`, {
+   //             method: 'POST',
+   //             mode: "cors",
+   //             headers: {
+   //                "Content-Type": "application/json",
+   //                "Accept": "application/json",
+   //             },
+   //             body: JSON.stringify({
+   //                equipmentCosts: 0,
+   //                estimatedProfit: 0,
+   //                machineOperatorSalary: 0,
+   //                mainCosts: 0,
+   //                materials: 0,
+   //                mimExploitation: 0,
+   //                overheads: 0,
+   //                parentId: null,
+   //                rowName: 'Test',
+   //                salary: 0,
+   //                supportCosts: 0
+   //             })
+   //          })
+   //          const newRow = await createRowInEntity.json()
+   //          console.log('Creating row', newRow.current)
+
+   //          const rId: number = newRow.current.id;
+   //          console.log(newRow.current.id, 'rID')
+
+   //          const updateRow = await fetch(`http://185.244.172.108:8081/v1/outlay-rows/entity/${eId}/row/${rId}/update`, {
+   //             method: 'POST',
+   //             mode: "cors",
+   //             headers: {
+   //                "Content-Type": "application/json",
+   //                "Accept": "application/json",
+   //             },
+   //             body: JSON.stringify({
+   //                equipmentCosts: 1,
+   //                estimatedProfit: 1,
+   //                machineOperatorSalary: 1,
+   //                mainCosts: 1,
+   //                materials: 1,
+   //                mimExploitation: 0,
+   //                overheads: 0,
+   //                parentId: null,
+   //                rowName: 'Updating row',
+   //                salary: 0,
+   //                supportCosts: 0
+   //             })
+   //          })
+   //          const updatedRow = await updateRow.json()
+   //          console.log('Updated row', updatedRow.current)
+   //       } catch (error) {
+   //          console.log(error)
+   //       }
+   //    }
+   //    fetchEntity()
+   // }, [])
+
+   // let eId: number;
+   // useEffect(() => {
+   //    try {
+
+   //    } catch (error) {
+
+   //    }
+   // })
 
    // useEffect(() => {
    //    const fetchData = async () => {
@@ -160,8 +211,8 @@ const Main = () => {
             <div className='container__items'>
                {DataRow.map((t, i) => {
                   return <div key={i} className="items__row">
-                     <>{IconList.map(i => t.id === i.id && i.icon)}</>
-                     <div className="row__title-work" > {<EditableSpan value={t.rowName} />}</div >
+                     {IconList.map((i, k) => t.id === i.id && <div key={k}>{i.icon}</div>)}
+                     <div className="row__title-work" >{<EditableSpan value={t.rowName} />}</div >
                      <div className="row__salary">{<EditableSpan value={t.salary} />}</div>
                      <div className="row__equipment-costs">{<EditableSpan value={t.equipment} />}</div>
                      <div className="row__overheads">{<EditableSpan value={t.overheads} />}</div>

@@ -15,10 +15,12 @@ export type RowResponseType = {
    mainCosts: number
    materials: number
    mimExploitation: number
+   overheads: number
    parentId: number | null
-   rowName: string,
+   rowName: string
    salary: number
    supportCosts: number
+
 }
 
 export const tableAPI = {
@@ -28,8 +30,8 @@ export const tableAPI = {
       return response.data.id
    },
    // todo Failed
-   createRow: async (eId: number, request: RowResponseType) => {
-      const response = await instance.post(`${eId}/row/create`, { request })
+   createRow: async (eId: number, row: RowResponseType) => {
+      const response = await instance.post(`${eId}/row/create`, row)
       console.log(response)
       return response
    },
@@ -39,7 +41,7 @@ export const tableAPI = {
       return response.data
    },
    updateRow: async (eId: number, rId: number, updatedDataRow: RowResponseType) => {
-      const response = await instance.post(`${eId}/row/${rId}/update`, { updatedDataRow })
+      const response = await instance.post<any>(`${eId}/row/${rId}/update`, { updatedDataRow })
       return response.data
    }
 }
